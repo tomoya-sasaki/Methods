@@ -173,4 +173,5 @@ MSE(\thetahat) = \E[ (\thetahat - \theta)^2  ] = (\E[\thetahat] - \theta) + \V(\
 ### Unknown distribution
 * Use the CLT: $\bar{X}_n \sim \cN(\mu, \sigma^2/n) \rightarrow \cN(0, 1)$
 * Also use the LLN: $S_n^2 \rightarrow \sigma^2$
+* The rest of the procedure is the same as above
 
