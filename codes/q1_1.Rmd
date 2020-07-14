@@ -124,7 +124,7 @@ $Y \leq y$: $F_Y(y) = Pr(Y \leq y)$
 ## Properties of estimators
 * There are multiple estimators you can choose from. 
 * Researchers often rely on the distribution of an estimator due to repeated sampling (the sampling distribution)
-* Nice summary on slide 5-1-36
+* Nice summary on slide 5-1-36, examples on the slide 1-2 and 1-4
 
 ### Finite-sample properties
 * Unbiasedness: Is the sampling distribution of our estimator centered at the true parameter value? $\E[\thetahat^*] = \mu$ if and only if bias is zero
@@ -139,7 +139,38 @@ $Y \leq y$: $F_Y(y) = Pr(Y \leq y)$
 * MLE: all but unbiasedness
 
 ### Mean squared error
-* Show bias-variance tradeoff: more efficiency, more bias
+* Examine and bias and variance of the estimator
 \begin{align*}
-MSE(\thetahat) = \E[ (\thetahat - \theta)^2  ] = (\E[\thetahat] - \theta) + \V(\thetahat)
+MSE(\thetahat) = \E[ (\thetahat - \theta)^2  ] = (\E[\thetahat] - \theta) + \V(\thetahat) + \text{Bias}(\thetahat) + \text{Variance} (\thetahat)
 \end{align*}
+
+## Confidence interval
+* The sampling distribution of the sample average is $\bar{X}_n \sim \cN(\mu, \sigma^2/n)$
+* Note that $\mu$ and $\sigma$ are population parameters and $\bar{X}_n$ is an estimate
+* Useful summary on the slide 5-2-22
+* Examples: quiz 1-1D, 2-2
+
+### Population is normal with know variance ($\sigma^2$)
+* Derive a 95% confidence interval of a parameter $\mu$
+\begin{align*}
+&Pr(\bar{X}_n - 1.96 \sigma/\sqrt{n} < \mu < \bar{X}_n + 1.96 \sigma/\sqrt{n}) = .95 \\
+&\therefore [\bar{X}_n - 1.96 \sigma/\sqrt{n}, \bar{X}_n + 1.96 \sigma/\sqrt{n}] 
+\end{align*}
+* More general form: Let $Z_{\alpha/2}$ be the $100(1/\alpha/2)$ percentile of the standard normal distribution
+\begin{align*}
+[\bar{X}_n - Z_{\alpha/2} \sigma / \sqrt{n}, \bar{X}_n + Z_{\alpha/2} \sigma / \sqrt{n}] 
+\end{align*}
+
+### Population is normal with unknow variance
+* Use sample variance and the t-distribution
+* Sample variance: $S_n^2 = \frac{1}{n-1} \sum_{i = 1}^n (X_i - \bar{X}_n)^2$ (unbiased and consistent)
+* t-distribution with $n-1$ degree of freedom: $\tau_{n-1} \sim \frac{\bar{X}_n - \mu}{S_n / \sqrt{n}}$
+* To construct a confidence interval, swap $Z$ with $t$ which comes from t-distribution and $\sigma$ with $S_n$
+\begin{align*}
+[\bar{X}_n - t_{\alpha/2} S_n / \sqrt{n}, \bar{X}_n + t_{\alpha/2} S_n / \sqrt{n}] 
+\end{align*}
+
+### Unknown distribution
+* Use the CLT: $\bar{X}_n \sim \cN(\mu, \sigma^2/n) \rightarrow \cN(0, 1)$
+* Also use the LLN: $S_n^2 \rightarrow \sigma^2$
+
