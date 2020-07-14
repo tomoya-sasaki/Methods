@@ -1,0 +1,81 @@
+---
+title: "Quant 1-1"
+author: "Tomoya Sasaki"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\cR}{\mathbb{R}}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
+
+
+# Probability Theory (2, 3)
+## Three axioms
+* nonnegativity
+* normalization
+* additivity 
+
+$\leadsto$  Check these when you see probability distributions
+
+## Key concepts
+### Conditional probability
+\begin{align*}
+P(A | B) = \frac{P(A \cap B)}{P(B)}
+\end{align*}
+
+### Law of total probability
+* Let $A_1, \dots, A_n$ be disjoint events that form a partition of the sample space and assume P(A_i) > 0 for all $i$
+\begin{align*}
+P(B) &= P(A_1 \cap B) + P(A_2 \cap B) + \dots + P(A_n \cap B) \\
+&= P(B | A_1) P(A_1) + \dots + P(B | A_n) P(A_n) \\
+&= \sum_{i = 1}^n P(B | A_i) P(A_i) \\
+&= P(B | A) P(A) + P(B | A^C) P(A^C)
+\end{align*}
+* Example: quiz 1-extra
+
+### Bayes rule 
+* Use the conditional probability law and the law of total probability
+\begin{align*}
+P(A | B) &= \frac{P(A \cap B)}{P(B)} \\
+&= \frac{P(A) P(B | A)}{P(B)} \\
+&= \frac{P(A) P(B | A)}{\sum_{i = 1}^n P(B | A_i) P(A_i)} \\
+&= \frac{P(A) P(B | A)}{P(B | A) P(A) + P(B | A^C) P(A^C)}
+\end{align*}
+* Example: slide 2-23, quiz 1-3
+
+### Independence
+* Intuition: Events A and B are independent if knowing whether A occurred provides no information about whether B occurred 
+* rolling two fair dice, getting one for one die and getting six for the other one
+\begin{align*}
+P(A \cap B) = P(A)P(B) \Leftrightarrow A \indep B
+\end{align*}
+* Implication
+\begin{align*}
+P(A) &= P(A | B) = P(A | B^C) \\
+P(A \cap B) &= P(A)P(B) = P(A | B) P(B) = P(A | B^C) P(B^C)
+\end{align*}
+* Analogous concept: conditional independence 
+* Example: slide 1-26, quiz 1A
+
+## Random variables and distributions
+### Random variables
+* Definition: A random variable is a real valued function that maps the sample space ($\Omega$) to the real numbers ($\cR$)
+
+### Probability law
+* Definition: The probability law $P_X(x)$ of a random variable $X$ is a real-valued function that assigns probabilities to each of its possible values $x \in X$. i.e.) $P_X: x \rightarrow [0, 1]$. It encodes our knowledge or belief about the likelihood of the outcomes in $\Omega$.
+* If random variables are discrete, we call it the probability mass function
+* If random variables are continuous, we call it the probability density function
+
+### Cumulative function
+* A cumulative distribution function $f_Y(y)$ of a random variable $Y$ is a non-decreasing function that gives you the probability that 
+$Y \leq y$: $F_Y(y) = Pr(Y \leq y)$
+* Discrete: $F_Y(y) = \sum_{\forall Y^\prime \leq y} P_Y (Y^\prime)$
+* Continuous: $F_Y(y) = \int_{- \inf}^{y} f_Y (Y^\prime) dY^\prime$ where $f_Y(y)$ is the probability density function for a random variable $Y$
+
+## Expectation and variance
+* 
+
